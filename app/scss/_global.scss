@@ -1,0 +1,1846 @@
+html,
+body {
+  height: 100%;
+  width: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  @extend %montserrat;
+  font-weight: 400;
+  background-color: #fff;
+  color: #000;
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+}
+
+.content {
+  flex: 1 0 auto;
+}
+
+.footer {
+  flex: 0 0 auto;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}
+
+.calc-label {
+  font-size: 18px;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.43);
+  display: inline-block;
+  background-color: #fff;
+  padding: 10px 15px;
+  position: absolute;
+  top: -22px;
+  @include md($hd) {
+    font-size: 14px;
+  }
+  @include md($desktop) {
+    position: static;
+    text-align: center;
+    flex: 1 1 auto;
+  }
+  @include md($tablet-2) {
+    padding: 0;
+    padding-bottom: 10px;
+  }
+}
+
+.fullwidth-container {
+  padding: 0 95px;
+
+  @include md($hd) {
+    padding: 0 55px;
+  }
+
+  @include md($desktop) {
+    padding: 0 35px;
+  }
+
+  @include md($tablet-2) {
+    padding: 0 15px;
+  }
+}
+
+.fixed-container {
+  max-width: 1760px;
+  margin: 0 auto;
+  padding: 0 15px;
+
+  //адаптивный контейнер
+  @include md($hd) {
+    max-width: 1150px;
+  }
+
+  @include md($desktop) {
+    max-width: 970px;
+  }
+
+  @include md($tablet-2) {
+    max-width: 750px;
+  }
+
+  @include md($tablet) {
+    max-width: none;
+  }
+
+  // @media (max-width: 1200px) {
+  //   .container {
+  //     max-width: 970px;
+  //   }
+  // }
+  // @media (max-width: 992px) {
+  //   .container {
+  //     max-width: 750px;
+  //   }
+  // }
+  //   @media (max-width: 768px) {
+  //     .container {
+  //       max-width: none;
+  //     }
+  //   }
+}
+
+.header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: 20;
+  transition: all 0.1s ease 0.1s;
+
+  &--active {
+    background-color: #fff;
+  }
+
+  &__nav {
+    padding: 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 19px;
+
+    @include md($hd) {
+      font-size: 17px;
+      padding: 15px;
+    }
+
+    @include land($height) {
+      padding: 10px;
+    }
+
+    @include md($phone) {
+      padding: 5px 0;
+    }
+  }
+
+  &__logo {
+    margin-right: 205px;
+
+    @include md($hd) {
+      margin-right: auto;
+    }
+  }
+
+  &__menu {
+    margin-right: auto;
+  }
+
+  &__buttons {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.chat {
+  &__button {
+    position: fixed;
+    background-color: #fff;
+    border-radius: 50%;
+    width: 66px;
+    height: 66px;
+    z-index: 50;
+    right: 5%;
+    bottom: 5%;
+    transition: all 0.3s;
+
+    &::after {
+      content: "";
+      mask-image: url("../images/svg-images/chat.svg");
+      background-color: #000;
+      mask-repeat: no-repeat;
+      mask-size: cover;
+      mask-position: center;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.3s;
+    }
+
+    &:hover {
+      background-color: #000;
+
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.h1 {
+  font-size: 45px;
+  font-weight: 700;
+  @include line-clamp(2);
+
+  @include md($hd) {
+    font-size: 36px;
+  }
+
+  @include md($desktop) {
+    font-size: 32px;
+  }
+
+  @include md($tel) {
+    font-size: 26px;
+  }
+}
+
+.h2 {
+  font-size: 32px;
+  font-weight: 600;
+  @include line-clamp(2);
+
+  @include md($desktop) {
+    font-size: 26px;
+  }
+
+  @include md($tablet-2) {
+    font-size: 24px;
+  }
+
+  @include land($height) {
+    font-size: 20px;
+  }
+
+  @include md($phone) {
+    font-size: 20px;
+  }
+}
+
+.h3 {
+  font-size: 26px;
+  font-weight: 600;
+
+  @include md($desktop) {
+    font-size: 22px;
+  }
+
+  @include md($tablet-2) {
+    font-size: 18px;
+  }
+
+  @include land($height) {
+    font-size: 16px;
+  }
+
+  @include md($phone) {
+    font-size: 16px;
+  }
+}
+
+.menu {
+  display: flex;
+
+  @include md($tablet-2) {
+    display: none;
+  }
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 25px;
+
+      @include md($hd) {
+        margin-right: 15px;
+      }
+    }
+  }
+
+  &__link {
+    padding: 5px 20px;
+
+    @include md($hd) {
+      padding: 5px 10px;
+    }
+
+    &--active {
+      border-radius: 17px;
+      background-color: rgba(44, 53, 64, 0.1);
+    }
+  }
+}
+
+.logo {
+  &__img {
+    @include md($hd) {
+      width: 96px;
+      height: 50px;
+    }
+
+    @include md($phone) {
+      width: 66px;
+      height: 40px;
+    }
+
+    @include land($height) {
+      width: 66px;
+      height: 40px;
+    }
+  }
+}
+
+.field {
+  background-color: rgba(196, 196, 196, 0.19);
+  border-radius: 25px;
+  outline: transparent;
+  border: none;
+  padding: 15px;
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  padding-left: 25px;
+  &::placeholder {
+    color: #c4c4c4;
+  }
+}
+
+.grey-effects {
+  transition: all 0.1s ease 0.1s;
+  border-radius: 17px;
+
+  &:hover {
+    background: rgba(44, 53, 64, 0.1);
+  }
+}
+
+.change-language {
+  display: flex;
+  margin-right: 35px;
+
+  @include md($tablet-2) {
+    display: none;
+  }
+
+  &__item {
+    &:first-child {
+      padding-right: 15px;
+      position: relative;
+
+      &:after {
+        content: "/";
+        position: absolute;
+        right: 4px;
+        top: 50%;
+        transform: translateY(-50%);
+      }
+    }
+  }
+}
+
+.menu-btn {
+  margin-right: 5px;
+}
+
+.burger {
+  @include burger;
+}
+
+.order-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 18px;
+  border: 3px solid #313131;
+  color: #313131;
+  border-radius: 35.5px;
+  background-color: #fff;
+  align-self: baseline;
+  white-space: nowrap;
+  padding: 15px 50px;
+  transition: all 0.2s;
+  @include line-clamp(1);
+
+  @include md($hd) {
+    font-size: 16px;
+  }
+
+  @include md($tablet-2) {
+    padding: 10px 32px;
+    font-size: 14px;
+  }
+
+  @include md($phone) {
+    font-size: 12px;
+  }
+
+  @include land($height) {
+    padding: 10px 32px;
+    font-size: 12px;
+  }
+
+  & span {
+    position: relative;
+    padding-right: 25px;
+    @include md($tablet-2) {
+      padding-right: 16px;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      mask-image: url("../images/svg-images/arrow-right.svg");
+      background-color: #313131;
+      mask-size: cover;
+      mask-repeat: no-repeat;
+      mask-position: center;
+      width: 24px;
+      height: 22px;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      transition: all 0.2s;
+
+      @include md($desktop) {
+        width: 20px;
+        height: 20px;
+      }
+
+      @include md($tablet-2) {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  &:hover {
+    background-color: #000;
+    color: #fff;
+    filter: drop-shadow(0 3px 11px rgba(0, 0, 0, 0.47));
+
+    & span:after {
+      background-color: #fff;
+    }
+  }
+}
+
+.burger-menu {
+  position: fixed;
+  right: 0;
+  top: 0;
+  transform: translateX(110%);
+  transition: all 0.3s ease 0.1s;
+  z-index: 99;
+  opacity: 0;
+
+  &--active {
+    transform: translateX(0);
+    opacity: 1;
+  }
+
+  &__wrapper {
+    background-color: #fff;
+    height: 100vh;
+    width: 20vw;
+    padding: 85px 50px 0 48px;
+    font-weight: 500;
+    position: relative;
+
+    @include md($hd) {
+      padding: 65px 40px 0 38px;
+      width: 25vw;
+    }
+
+    @include md($desktop) {
+      padding: 65px 25px 0 25px;
+    }
+
+    @include md($tablet-2) {
+      width: 40vw;
+    }
+
+    @include md($phone) {
+      width: 50vw;
+      padding: 65px 15px 0 15px;
+    }
+
+    @include land($height) {
+      padding: 45px 15px 0 15px;
+    }
+  }
+
+  &__btn {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: all 0.1s ease 0.1s;
+
+    &::after {
+      content: "";
+      background-image: url("../images/decorative-img/x-btn.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    flex-direction: column;
+    max-width: 355px;
+    width: 100%;
+  }
+
+  &__item {
+    margin-bottom: 19px;
+
+    @include md($hd) {
+      margin-bottom: 15px;
+    }
+
+    @include md($phone) {
+      margin-bottom: 5px;
+    }
+
+    @include land($height) {
+      margin-bottom: 2px;
+    }
+  }
+
+  &__link {
+    display: block;
+    padding: 4px 20px;
+
+    @include md($desktop) {
+      font-size: 14px;
+    }
+
+    @include md($phone) {
+      padding: 4px 10px;
+    }
+
+    &--active {
+      padding: 4px 23px;
+      border-radius: 17.5px;
+      background: rgba(196, 196, 196, 0.25);
+
+      @include md($phone) {
+        padding: 4px 10px;
+      }
+    }
+  }
+
+  &__language {
+    padding-left: 46px;
+    position: relative;
+
+    &::before {
+      content: "";
+      background-image: url("../images/decorative-img/language.png");
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      width: 19px;
+      height: 19px;
+      position: absolute;
+      left: 20px;
+    }
+  }
+}
+
+.lock {
+  // overflow: hidden;
+  position: relative;
+  transition: all 0.1s;
+
+  &::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 30;
+  }
+}
+
+.double-section-main {
+  &__container {
+    padding-right: 0;
+
+    @include md($tablet-2) {
+      padding: 0;
+    }
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+
+    @include md($tablet-2) {
+      flex-direction: column;
+      font-size: 14px;
+    }
+  }
+
+  &__body {
+    flex: 0 1 25%;
+    padding: 115px 0 60px 0;
+    display: flex;
+    flex-direction: column;
+    margin-right: 25px;
+
+    @include md($hd) {
+      margin-right: 20px;
+    }
+
+    @include md($desktop) {
+      padding: 10% 0 60px 0;
+      margin-right: 25px;
+    }
+
+    @include md($tablet-2) {
+      order: 1;
+      justify-content: start;
+      padding: 15px 0 15px 15px;
+      margin-right: 15px;
+    }
+  }
+
+  &__inner {
+    flex: 1 0 auto;
+
+    @include md($tablet-2) {
+      margin-bottom: 25px;
+    }
+
+    @include md($phone) {
+      margin-bottom: 15px;
+    }
+
+    @include land($height) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 25px;
+
+    @include md($phone) {
+      margin-bottom: 10px;
+    }
+
+    @include land($height) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__text {
+    @include line-clamp(10);
+  }
+
+  &__text-link {
+    font-weight: 700;
+    text-decoration: underline;
+  }
+
+  &__bg {
+    flex: 1 1 75%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 80vh;
+
+    @include md($hd) {
+      background-position: right center;
+    }
+
+    @include md($tablet-2) {
+      flex: 1 1 auto;
+      height: 60vh;
+      order: 0;
+    }
+  }
+}
+
+.hidden {
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  position: absolute;
+}
+
+.our-projects-slider {
+  width: 1010px;
+  height: 500px;
+  margin: 0;
+
+  @include md($tablet-2) {
+    width: 100%;
+    height: 400px;
+  }
+
+  @include md($phone) {
+    height: 300px;
+  }
+
+  &__prev,
+  &__next {
+    width: 13px;
+    height: 26px;
+    color: rgba(255, 255, 255, 0.79);
+  }
+
+  &__img {
+    object-fit: cover;
+    object-position: center top;
+  }
+}
+
+.page-numbers {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  @include land ($height) {
+    justify-content: center;
+  }
+  @include md($phone) {
+    justify-content: center;
+  }
+
+  &__numbers {
+    display: flex;
+
+    @include md($tel) {
+      margin-bottom: 10px;
+    }
+  }
+
+  &__item {
+    width: 43px;
+    height: 43px;
+    border: 2px solid #000000;
+    border-radius: 50%;
+    background-color: #fff;
+    position: relative;
+    cursor: pointer;
+    transition: all 0.2s;
+    @include md($phone) {
+      width: 35px;
+      height: 35px;
+    }
+    @include land($height) {
+      width: 35px;
+      height: 35px;
+    }
+
+    &:not(:last-child) {
+      margin-right: 10px;
+    }
+
+    &::after {
+      content: "";
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: cover;
+      background-color: #000;
+      width: 24px;
+      height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.2s;
+      @include md($phone) {
+        width: 18px;
+        height: 18px;
+      }
+      @include land($height) {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &--1 {
+      &::after {
+        mask-image: url("../images/svg-images/number-1.svg");
+      }
+    }
+
+    &--2 {
+      &::after {
+        mask-image: url("../images/svg-images/number-2.svg");
+      }
+    }
+
+    &--3 {
+      &::after {
+        mask-image: url("../images/svg-images/number-3.svg");
+      }
+    }
+
+    &--arrow {
+      &::after {
+        content: "";
+        mask-image: url("../images/svg-images/arrow-right.svg");
+        background-color: #000;
+      }
+    }
+
+    &--active {
+      background-color: #000;
+
+      &::after {
+        background-color: #fff;
+      }
+    }
+
+    &:hover {
+      background-color: #000;
+
+      &::after {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.about-panels-slider {
+  &__img {
+    object-fit: cover;
+    object-position: center;
+
+    @include md($hd) {
+      height: 550px;
+    }
+
+    @include md($tablet-2) {
+      height: 450px;
+    }
+
+    @include md($phone) {
+      height: 350px;
+    }
+
+    @include land($height) {
+      height: 350px;
+    }
+  }
+
+  &__prev,
+  &__next {
+    @include md($phone) {
+      display: none;
+    }
+  }
+}
+.range-slider {
+  padding: 32px 75px 25px;
+  border: 1px solid rgba(0, 0, 0, 0.17);
+  border-radius: 5px;
+  position: relative;
+  margin-bottom: 12px;
+  @include md($desktop) {
+    padding: 30px 35px 20px;
+  }
+  @include md($phone) {
+    padding: 20px;
+  }
+  @include land($height) {
+    padding: 20px;
+  }
+  &__value {
+    font-size: 36px;
+    font-weight: 600;
+    color: #000;
+    display: flex;
+    justify-content: center;
+    padding-top: 28px;
+    @include md($tablet) {
+      padding-top: 15px;
+      font-size: 26px;
+    }
+    @include land($height) {
+      padding-top: 15px;
+      font-size: 26px;
+    }
+  }
+
+  &__label {
+    @include md($phone) {
+      padding-bottom: 25px;
+    }
+    @include land($height) {
+      padding-bottom: 25px;
+    }
+  }
+}
+
+.blog-slider {
+  display: none;
+  width: 485px;
+  height: 380px;
+  @include md($tablet-2) {
+    display: block;
+  }
+  @include md($phone) {
+    width: 350px;
+    height: 370px;
+  }
+  @include md($tel) {
+    width: 300px;
+    height: 320px;
+  }
+  @include land($height) {
+    width: 450px;
+    height: 250px;
+  }
+}
+
+.article {
+  max-width: 1510px;
+  width: 100%;
+  border-radius: 20px;
+  transition: all 0.2s;
+  @include md($phone) {
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.09);
+  }
+  @include land($height) {
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.09);
+  }
+
+  &__link {
+    display: inline-flex;
+    @include md($phone) {
+      flex-direction: column;
+    }
+  }
+
+  &__img {
+    max-width: 630px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 20px 0 0 20px;
+    @include md($hd) {
+      width: 500px;
+    }
+    @include md($desktop) {
+      width: 400px;
+      height: 300px;
+    }
+    @include md($tablet-2) {
+      width: 320px;
+      height: 250px;
+    }
+
+    @include md($tablet) {
+      width: 250px;
+      height: 220px;
+    }
+
+    @include md($phone) {
+      width: 100%;
+      height: 200px;
+      border-radius: 20px 20px 0 0;
+    }
+  }
+
+  &__body {
+    padding: 35px 15px 0 50px;
+    max-width: 660px;
+    width: 100%;
+    @include md($hd) {
+      padding: 35px 15px 0 40px;
+    }
+    @include md($desktop) {
+      padding: 25px 15px 0 30px;
+    }
+    @include md($tablet-2) {
+      padding: 15px;
+    }
+    @include md($phone) {
+      padding: 10px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 25px;
+    @include md($tablet) {
+      margin-bottom: 15px;
+    }
+    @include md($phone) {
+      margin-bottom: 0;
+      font-weight: 400;
+    }
+  }
+
+  &__text {
+    font-size: 22px;
+    color: rgba(0, 0, 0, 0.71);
+    @include line-clamp(5);
+    @include md($hd) {
+      font-size: 20px;
+    }
+    @include md($tablet-2) {
+      font-size: 18px;
+    }
+
+    @include md($tablet) {
+      font-size: 16px;
+    }
+    @include md($phone) {
+      display: none;
+    }
+    @include land($height) {
+      font-size: 14px;
+    }
+  }
+
+  &:hover {
+    box-shadow: 0px 4px 18px rgba(0, 0, 0, 0.09);
+  }
+}
+
+.stage-cards {
+  position: relative;
+  &::before {
+    font-size: 300px;
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.54);
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    @include md($hd) {
+      font-size: 200px;
+    }
+  }
+  &--first {
+    &::before {
+      content: "1";
+    }
+  }
+  &--second {
+    &::before {
+      content: "2";
+    }
+  }
+  &--third {
+    &::before {
+      content: "3";
+    }
+  }
+  &__img {
+    border-radius: 48px;
+    object-fit: cover;
+    object-position: center;
+    @include md($hd) {
+      height: 400px;
+    }
+    @include md($desktop) {
+      height: 350px;
+      width: 300px;
+    }
+
+    @include md($tablet) {
+      width: 350px;
+    }
+
+    @include md($tel) {
+    }
+  }
+
+  &__inner {
+    position: absolute;
+    left: 50%;
+    bottom: 5%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    max-width: 270px;
+    width: 100%;
+    z-index: 3;
+    @include md($hd) {
+      padding: 10px 15px;
+      transform: translate(-50%);
+    }
+
+    @include md($phone) {
+      text-align: center;
+    }
+    @include land($height) {
+      text-align: center;
+    }
+  }
+
+  &__name {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 11px;
+    @include md($hd) {
+      font-size: 26px;
+    }
+  }
+
+  &__text {
+    font-size: 24px;
+    font-weight: 500;
+    @include md($hd) {
+      font-size: 20px;
+    }
+  }
+}
+
+.blog-cards {
+  width: 485px;
+  height: 380px;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  position: relative;
+  border-radius: 40px;
+  display: flex;
+  filter: drop-shadow(0 10px 45px rgba(0, 0, 0, 0.3));
+  @include md($hd) {
+    width: 350px;
+    height: 350px;
+  }
+  @include md($desktop) {
+    width: 300px;
+    height: 320px;
+  }
+
+  @include md($tablet-2) {
+    width: 485px;
+    height: 380px;
+    filter: none;
+  }
+  @include md($phone) {
+    width: 350px;
+    height: 370px;
+  }
+  @include land($height) {
+    width: 450px;
+    height: 250px;
+  }
+  @include md($tel) {
+    width: 300px;
+    height: 320px;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-image: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0.59) 0%,
+      rgba(0, 0, 0, 0.04) 100%
+    );
+    border-radius: 40px;
+    z-index: 2;
+  }
+
+  &__content {
+    color: #c8c8c8;
+    position: relative;
+    z-index: 3;
+    padding: 45px 100px 30px 60px;
+    display: flex;
+    flex-direction: column;
+    @include md($hd) {
+      padding: 30px;
+    }
+    @include md($desktop) {
+      padding: 20px;
+    }
+    @include md($tablet-2) {
+      padding: 45px 100px 30px 60px;
+    }
+    @include md($phone) {
+      padding: 25px 25px 45px 25px;
+    }
+    @include land($height) {
+      padding: 25px 25px 45px 25px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 35px;
+    font-size: 14px;
+    @include md($desktop) {
+      font-size: 12px;
+    }
+  }
+
+  &__text {
+    font-size: 24px;
+    font-weight: 700;
+    flex: 1 0 auto;
+    @include md($hd) {
+      font-size: 22px;
+    }
+    @include md($tablet) {
+      font-size: 20px;
+    }
+  }
+
+  &__link {
+    padding: 15px 30px;
+    background-color: #fff;
+    color: #000;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.24);
+    border-radius: 5px;
+    align-self: baseline;
+    white-space: nowrap;
+    transition: all 0.2s;
+    @include md($desktop) {
+      padding: 10px 30px;
+    }
+    @include md($phone) {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+    @include land($height) {
+      font-size: 14px;
+      padding: 10px 20px;
+    }
+    &:hover {
+      color: #fff;
+      background-color: #000;
+    }
+  }
+}
+
+.stages-slider {
+  display: none;
+  width: 350px;
+  padding: 10px;
+  margin: -10px;
+  margin-bottom: 30px;
+  @include md($tablet) {
+    display: block;
+    order: 1;
+  }
+
+  @include md($tel) {
+    width: 300px;
+    padding: 5px;
+    margin: -5px;
+    margin-bottom: 15px;
+  }
+  @include land($height) {
+    width: 300px;
+    padding: 5px;
+    margin: -5px;
+    margin-bottom: 15px;
+  }
+}
+
+.contacts-info {
+  max-width: 560px;
+  padding: 25px 0 40px;
+  display: grid;
+  grid-template-columns: repeat(2, 250px);
+  gap: 30px;
+  @include md($desktop) {
+    gap: 25px;
+  }
+  @include md($tablet-2) {
+    gap: 15px;
+  }
+
+  @include md($phone) {
+    grid-template-columns: repeat(1, 250px);
+    padding: 25px 0;
+  }
+  @include land($height) {
+    padding: 25px 0;
+  }
+
+  &__title {
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 600;
+    padding-left: 25px;
+    color: rgba(0, 0, 0, 0.8);
+    position: relative;
+    @include md($desktop) {
+      font-size: 20px;
+    }
+    @include md($phone) {
+      font-size: 18px;
+    }
+    @include land($height) {
+      font-size: 18px;
+    }
+    &::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      background-color: #000;
+      mask-size: cover;
+      mask-repeat: no-repeat;
+      @include md($desktop) {
+        width: 18px;
+        height: 18px;
+      }
+    }
+
+    &--email {
+      &::before {
+        mask-image: url("../images/svg-images/email.svg");
+      }
+    }
+    &--location {
+      &::before {
+        mask-image: url("../images/svg-images/location.svg");
+      }
+    }
+    &--phone {
+      &::before {
+        mask-image: url("../images/svg-images/tel.svg");
+      }
+    }
+    &--social {
+      &::before {
+        mask-image: url("../images/svg-images/social.svg");
+      }
+    }
+  }
+
+  &__link {
+    font-size: 17px;
+    color: rgba(0, 0, 0, 0.76);
+    font-weight: 500;
+    @include md($phone) {
+      font-size: 16px;
+    }
+    &:not(:last-child) {
+      display: inline-block;
+      margin-bottom: 5px;
+    }
+  }
+
+  &__socials {
+    padding-top: 10px;
+    @include md($phone) {
+      padding-top: 5px;
+    }
+  }
+
+  &__links,
+  .socials__link {
+    width: 30px;
+    height: 30px;
+    &::after {
+      width: 30px;
+      height: 30px;
+    }
+  }
+}
+
+.contacts-form {
+  max-width: 1430px;
+  &__title {
+    margin-bottom: 30px;
+    @include md($phone) {
+      margin-bottom: 25px;
+      font-size: 18px;
+    }
+  }
+  &__wrapper {
+    display: flex;
+    margin-bottom: 60px;
+    column-gap: 70px;
+    @include md($hd) {
+      column-gap: 40px;
+    }
+    @include md($tablet-2) {
+      flex-direction: column;
+      column-gap: 0;
+      row-gap: 25px;
+      margin-bottom: 35px;
+    }
+    @include md($tablet) {
+      margin-bottom: 25px;
+    }
+  }
+  &__inputs {
+    display: grid;
+    grid-template-columns: repeat(2, 330px);
+    row-gap: 40px;
+    column-gap: 45px;
+    @include md($hd) {
+      grid-template-columns: repeat(2, 250px);
+      row-gap: 30px;
+      column-gap: 35px;
+    }
+    @include md($desktop) {
+      grid-template-columns: repeat(2, 220px);
+      column-gap: 25px;
+      row-gap: 25px;
+    }
+
+    @include md($tablet-2) {
+      grid-template-columns: repeat(3, 220px);
+      row-gap: 15px;
+    }
+
+    @include md($tablet) {
+      grid-template-columns: repeat(2, 220px);
+    }
+
+    @include md($phone) {
+      grid-template-columns: repeat(1, 290px);
+    }
+  }
+  &__item {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__label {
+    flex: 1 0 auto;
+    margin-bottom: 5px;
+    font-size: 22px;
+    font-weight: 600;
+    padding-left: 25px;
+    color: rgba(0, 0, 0, 0.61);
+    @include md($desktop) {
+      font-size: 20px;
+    }
+    @include md($tablet) {
+      font-size: 18px;
+    }
+  }
+
+  &__textarea {
+    width: 677px;
+    height: 230px;
+    resize: none;
+    @include md($hd) {
+      width: 550px;
+    }
+    @include md($desktop) {
+      width: 450px;
+    }
+    @include md($tablet-2) {
+      width: 100%;
+    }
+  }
+
+  &__row {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    font-size: 20px;
+    font-weight: 500;
+    color: rgba(0, 0, 0, 0.58);
+    @include md($desktop) {
+      font-size: 18px;
+    }
+    @include md($tablet) {
+      flex-direction: column;
+      font-size: 16px;
+    }
+  }
+
+  &__text {
+    @include md($tablet) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__button {
+    padding: 13px 82px;
+    background-color: #000;
+    color: #fff;
+    border-radius: 25px;
+    border: 2px solid transparent;
+    transition: all 0.2s;
+    @include md($desktop) {
+      padding: 11px 62px;
+    }
+    @include md($tablet-2) {
+      padding: 11px 38px;
+    }
+    &:hover {
+      background-color: #fff;
+      color: #000;
+      border: 2px solid #595959;
+    }
+  }
+}
+
+.footer {
+  background-color: rgba(242, 242, 242, 0.57);
+
+  &--black {
+    background-color: #151515;
+    color: #fff;
+  }
+
+  &__top {
+    padding: 50px 0 50px;
+    display: flex;
+    justify-content: center;
+
+    &--black {
+      border-top: 1px solid #a4a4a4;
+    }
+
+    @include md($desktop) {
+      padding: 40px 0 40px;
+    }
+
+    @include md($tablet-2) {
+      padding: 25px 0 25px;
+    }
+
+    @include md($tablet) {
+      flex-wrap: wrap;
+      justify-content: start;
+    }
+  }
+
+  &__copyright {
+    font-weight: 500;
+    border-top: 1px solid #a4a4a4;
+    padding: 10px 0 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(49, 49, 49, 0.63);
+
+    &--black-version {
+      color: rgba(255, 255, 255, 0.61);
+    }
+
+    @include md($tablet-2) {
+      font-size: 14px;
+    }
+
+    @include md($phone) {
+      font-size: 12px;
+    }
+  }
+}
+
+.footer-box {
+  margin-right: 216px;
+
+  @include md($hd) {
+    margin-right: 150px;
+  }
+
+  @include md($desktop) {
+    margin-right: 100px;
+  }
+
+  @include md($tablet-2) {
+    margin-right: 30px;
+  }
+
+  @include md($tablet) {
+    margin-bottom: 20px;
+  }
+
+  &__name {
+    font-weight: 600;
+    font-size: 18px;
+    margin-bottom: 7px;
+
+    @include md($tablet-2) {
+      font-size: 16px;
+    }
+
+    @include md($phone) {
+      font-size: 14px;
+    }
+  }
+
+  &__item {
+    @include md($tablet-2) {
+      font-size: 14px;
+    }
+
+    @include md($phone) {
+      font-size: 12px;
+    }
+
+    &:not(:last-child) {
+      margin-bottom: 7px;
+    }
+  }
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  @include md($tablet-2) {
+    align-items: flex-start;
+  }
+
+  &__list {
+    font-size: 18px;
+    font-weight: 500;
+
+    @include md($tablet-2) {
+      font-size: 16px;
+    }
+
+    @include md($phone) {
+      font-size: 14px;
+    }
+  }
+
+  &__name {
+    font-weight: 600;
+    margin-bottom: 10px;
+
+    @include md($tablet-2) {
+      font-size: 16px;
+    }
+
+    @include md($phone) {
+      font-size: 14px;
+    }
+  }
+
+  &__item {
+    margin-bottom: 10px;
+    padding-left: 23px;
+    position: relative;
+
+    &::before {
+      content: "";
+      mask-repeat: no-repeat;
+      mask-position: center;
+      mask-size: cover;
+      background-color: #000;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      width: 20px;
+      height: 20px;
+      position: absolute;
+
+      @include md($phone) {
+        width: 15px;
+        height: 15px;
+      }
+    }
+
+    &--email {
+      &::before {
+        mask-image: url("../images/svg-images/email.svg");
+      }
+    }
+
+    &--tel {
+      &::before {
+        mask-image: url("../images/svg-images/tel.svg");
+      }
+    }
+
+    &--black {
+      &::before {
+        background-color: #fff;
+      }
+    }
+  }
+}
+
+.socials {
+  display: flex;
+  align-self: flex-start;
+
+  &__item {
+    &:not(:last-child) {
+      margin-right: 13px;
+    }
+  }
+
+  &__link {
+    display: block;
+    position: relative;
+    width: 23px;
+    height: 23px;
+
+    &::after {
+      content: "";
+      background-size: cover;
+      background-position: center;
+      position: absolute;
+      width: 23px;
+      height: 23px;
+      top: 0;
+      left: 0;
+    }
+
+    &--linkedin {
+      &::after {
+        background-image: url("../images/decorative-img/linkedin.png");
+      }
+    }
+
+    &--instagram {
+      &::after {
+        background-image: url("../images/decorative-img/instagram.png");
+      }
+    }
+
+    &--facebook {
+      &::after {
+        background-image: url("../images/decorative-img/facebook.png");
+      }
+    }
+  }
+}
+
+.swiper-button-prev,
+.swiper-button-next {
+  width: 13px;
+  height: 26px;
+  color: rgba(255, 255, 255, 0.79);
+}
+
+.swiper-pagination-bullets {
+  display: inline-flex;
+  height: 20px;
+  align-items: center;
+  justify-content: center;
+}
+
+.swiper-pagination-bullet,
+.swiper-pagination-bullet-active {
+  height: 10px;
+  position: relative;
+  width: 34px;
+  background-color: transparent;
+  opacity: 1;
+
+  &::after {
+    content: "";
+    width: 34px;
+    height: 3.5px;
+    background: #c4c4c4;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.swiper-pagination-bullet-active {
+  &::after {
+    height: 7px;
+    background-color: #090909;
+  }
+}
+
+.irs--flat .irs-line {
+  top: 0;
+  height: 30px;
+  background-color: rgba(196, 196, 196, 0.45);
+  border-radius: 15px;
+  @include md($tablet) {
+    height: 25px;
+  }
+}
+
+.irs--flat .irs-handle {
+  top: -10px;
+  width: 51px;
+  height: 51px;
+  background-color: #fff;
+  border-radius: 50%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+  @include md($tablet) {
+    width: 40px;
+    height: 40px;
+    top: -9px;
+  }
+}
+
+.irs--flat .irs-handle > i:first-child {
+  display: none;
+}
+
+.irs--flat .irs-bar {
+  top: 0;
+  height: 30px;
+  background-color: #034aa6;
+  border-radius: 15px;
+  @include md($tablet) {
+    height: 25px;
+  }
+}
+
+.irs-from,
+.irs-to,
+.irs-single {
+  display: none;
+}
+
+.irs--flat .irs-min,
+.irs--flat .irs-max {
+  display: none;
+}
